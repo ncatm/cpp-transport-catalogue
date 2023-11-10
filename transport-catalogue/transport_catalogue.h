@@ -36,8 +36,8 @@ namespace transport {
 
     class Catalogue {
     public:
-        void AddRoute(Route& route);
-        void AddStop(Stop& stop);
+        void AddRoute(const Route& route);
+        void AddStop(const Stop& stop);
         const Route* FindRoute(const std::string& route_number) const;
         Stop* FindStop(const std::string& stop_name) const;
         const RouteInfo RouteInformation(const std::string& route_number) const;
