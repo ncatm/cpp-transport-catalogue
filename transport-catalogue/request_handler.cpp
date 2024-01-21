@@ -88,11 +88,11 @@ std::optional<transport::BusStat> RequestHandler::GetBusStat(const std::string_v
 void RequestHandler::ProcessRequests(const json::Node& stat_requests) const {
     json::Array result;
     for (auto& request : stat_requests.AsArray()) {
-        const auto& request_map = request.AsMap();
+        const auto& request_map = request.AsDict();
         const auto& type = request_map.at("type").AsString();
-        if (type == "Stop") result.push_back(PrintStop(request_map).AsMap());
-        if (type == "Bus") result.push_back(PrintRoute(request_map).AsMap());
-        if (type == "Map") result.push_back(PrintMap(request_map).AsMap());
+        if (type == "Stop") result.push_back(PrintStop(request_map).AsDict());
+        if (type == "Bus") result.push_back(PrintRoute(request_map).AsDict());
+        if (type == "Map") result.push_back(PrintMap(request_map).AsDict());
     }
 
     json::Print(json::Document{ result }, std::cout);
